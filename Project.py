@@ -4,7 +4,7 @@ import numpy as np
 n0 = 1
 n1 = float(input("n1: "))
 n2 = float(input("n2: "))
-d = float(input("d: "))
+d = float(input("d(\u03BCm): "))
 N = int(input("N: "))
 d1,d2 = d,d
 m0,m1,m11,m00,m10,m10,m110,Mt = [],[],[],[],[],[],[],[]
@@ -44,11 +44,11 @@ T = [np.abs(t[i])**2 for i in range(len(lamda))]
 lmda = 0.633
 y = [i for i in np.arange(0,1.1,0.1)]
 x = [lmda for i in y]
-plt.title('n1: %.1f | n2: %.1f | d: %.2f micrometer | N: %d' %(n1,n2,d,N))
+plt.title('n1: %.1f | n2: %.1f | d: %.2f \u03BCm | N: %d' %(n1,n2,d,N))
 plt.plot(lamda,T,'b',label="Transmittance")
 plt.plot(lamda,R,'r',label="Reflectance")
-plt.plot(x,y,'-g',label="Lamda: %.3f" %lmda)
-plt.xlabel("Lamda (micrometer)")
+plt.plot(x,y,'--g',label="Lamda: %.3f \u03BCm" %lmda)
+plt.xlabel("Lamda (\u03BCm)")
 plt.ylabel("Intensity")
 plt.grid()
 plt.legend()
