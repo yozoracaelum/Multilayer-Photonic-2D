@@ -4,13 +4,11 @@ import numpy as np
 n0 = 1
 n1 = float(input("n1: "))
 n2 = float(input("n2: "))
-#l1 = float(input("l min: "))
-#l2 = float(input("l max: "))
 d = float(input("d: "))
 N = int(input("N: "))
 d1,d2 = d,d
 m0,m1,m11,m00,m10,m10,m110,Mt = [],[],[],[],[],[],[],[]
-lamda = np.arange(0.1,2,0.01)
+lamda = np.arange(0.1,2.1,0.01)
 w = [(2*np.pi)/i for i in lamda]
 k0 = [i*n0 for i in w]
 k1 = [i*n1 for i in w]
@@ -43,9 +41,13 @@ r = [-(Mt[i][1][0]/Mt[i][1][1]) for i in range(len(lamda))]
 t = [Mt[i][0][0]-((Mt[i][0][1]*Mt[i][1][0])/Mt[i][1][1]) for i in range(len(lamda))]
 R = [np.abs(r[i])**2 for i in range(len(lamda))]
 T = [np.abs(t[i])**2 for i in range(len(lamda))]
+lmda = 0.633
+y = [i for i in np.arange(0,1.1,0.1)]
+x = [lmda for i in y]
 plt.title('n1: %.1f | n2: %.1f | d: %.2f micrometer | N: %d' %(n1,n2,d,N))
 plt.plot(lamda,T,'b',label="Transmittance")
 plt.plot(lamda,R,'r',label="Reflectance")
+plt.plot(x,y,'-g',label="Lamda: %.3f" %lmda)
 plt.xlabel("Lamda (micrometer)")
 plt.ylabel("Intensity")
 plt.grid()
@@ -70,4 +72,5 @@ Mt1 = [np.dot(term1[i],m11[i]) for i in range(len(lamda))]
 Mt2 = [np.dot(Mt1[i],Minv[i]) for i in range(len(lamda))]
 Mt3 = [np.dot(Mt2[i],term3[i]) for i in range(len(lamda))]
 Mt = np.array(Mt3)
+#t = [Mt[i][0][0]+Mt[i][0][1]*r[i] for i in range(len(lamda))]
 '''
