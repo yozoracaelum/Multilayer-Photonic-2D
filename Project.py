@@ -41,8 +41,8 @@ Mt = np.array(Mt)
 print(Mt[0][1][0])
 r = [-(Mt[i][1][0]/Mt[i][1][1]) for i in range(len(lamda))]
 t = [Mt[i][0][0]-((Mt[i][0][1]*Mt[i][1][0])/Mt[i][1][1]) for i in range(len(lamda))]
-R = [abs(r[i]) for i in range(len(lamda))]
-T = [abs(t[i]) for i in range(len(lamda))]
+R = [np.abs(r[i])**2 for i in range(len(lamda))]
+T = [np.abs(t[i])**2 for i in range(len(lamda))]
 plt.title('n1: %.1f | n2: %.1f | d: %.2f micrometer | N: %d' %(n1,n2,d,N))
 plt.plot(lamda,T,'b',label="Transmittance")
 plt.plot(lamda,R,'r',label="Reflectance")
